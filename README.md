@@ -12,6 +12,10 @@ Demo Code with Examples for educational purpose
 
 ## Guides
 
+### General
+
+- [Wix Tips & Tricks](http://www.kentie.net/article/wixtipstricks/)
+
 ### Upgrades & Patches
 
 - [Using an UpgradeCode](https://docs.microsoft.com/de-de/windows/desktop/Msi/using-an-upgradecode)

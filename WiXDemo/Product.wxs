@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
+  <?define ProductName="WiXDemo" ?>
+  <?define Company="Acme Ltd." ?>
   <?define VersionNumber="!(bind.FileVersion.App.exe)" ?>
 
   <!-- See https://blogs.msdn.microsoft.com/pusu/2009/06/10/what-are-upgrade-product-and-package-codes-used-for/
@@ -10,14 +12,12 @@
        See also https://docs.microsoft.com/de-de/windows/desktop/Msi/productcode
        and https://docs.microsoft.com/de-de/windows/desktop/Msi/upgradecode
        and https://docs.microsoft.com/de-de/windows/desktop/Msi/productversion
-       and https://docs.microsoft.com/de-de/windows/desktop/Msi/patching-and-upgrades
-       and https://docs.microsoft.com/de-de/windows/desktop/Msi/preparing-an-application-for-future-major-upgrades
   -->
   <Product Id="*"
-           Name="WindowsInstallerXmlDemo"
+           Name="$(var.ProductName)"
            Language="1033"
            Version="$(var.VersionNumber)"
-           Manufacturer="Acme Ltd."
+           Manufacturer="$(var.Company)"
            UpgradeCode="849bce58-0d34-4814-a3dd-ebc9d6dd5224">
     
     <Package Id="*"
@@ -33,12 +33,12 @@
 
     <Condition Message="You need to be an administrator to install this product.">Privileged</Condition>
     <Condition Message='Windows Server 2008 or newer is required'>VersionNT >= 600 AND MsiNTProductType = 3</Condition>
-    <MajorUpgrade DowngradeErrorMessage="A newer version of WindowsInstallerXmlDemo is already installed." />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of $(var.ProductName) is already installed." />
     
     <MediaTemplate EmbedCab="yes" />
 
     <Feature Id="ProductFeature"
-             Title="WindowsInstallerXmlDemo"
+             Title="$(var.ProductName)"
              Level="1"
              Absent="disallow"
              AllowAdvertise="no">
@@ -60,12 +60,12 @@
       <Directory Id="ProgramMenuFolder"
                  Name="Programs">
         <Directory Id="ProgramMenuDir"
-                   Name="WindowsInstallerXmlDemo"/>
+                   Name="$(var.ProductName)"/>
       </Directory>
       <!-- For the special role of ProgramFilesFolder see https://docs.microsoft.com/de-de/windows/desktop/Msi/programfilesfolder -->
       <Directory Id="ProgramFilesFolder">
         <Directory Id="INSTALLDIR"
-                   Name="WindowsInstallerXmlDemo" />
+                   Name="$(var.ProductName)" />
       </Directory>
     </Directory>
   </Fragment>
@@ -85,7 +85,7 @@
               KeyPath='yes'>
           <Shortcut Id="ProgramMenuShortcut"
                     Directory="ProgramMenuDir"
-                    Name="Run Demo App"
+                    Name="Run $(var.ProductName) App"
                     WorkingDirectory="INSTALLDIR"
                     Icon="App.ico"
                     IconIndex="0"

@@ -12,6 +12,9 @@ Demo Code with Examples for educational purpose
 
 ## Guides
 
+### Upgrades & Patches
+
+- [Using an UpgradeCode](https://docs.microsoft.com/de-de/windows/desktop/Msi/using-an-upgradecode)
 - [Patching and Upgrading](https://docs.microsoft.com/de-de/windows/desktop/Msi/patching-and-upgrades)
 - [Preparing an Application for Future Major Upgrades](https://docs.microsoft.com/de-de/windows/desktop/Msi/preparing-an-application-for-future-major-upgrades)
 
